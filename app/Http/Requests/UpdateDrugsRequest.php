@@ -13,7 +13,7 @@ class UpdateDrugsRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,10 @@ class UpdateDrugsRequest extends FormRequest
     {
         return [
             //
+               'name' => 'required|max:32',
+            'manufacturer' => 'required',
+            'dose_form' => 'required',
+            'ingredients' => 'required',
         ];
     }
 }

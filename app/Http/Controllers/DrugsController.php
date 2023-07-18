@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Drugs;
 use App\Http\Requests\StoreDrugsRequest;
 use App\Http\Requests\UpdateDrugsRequest;
+use App\Models\Drugs;
+use Illuminate\Support\Carbon;
 
 class DrugsController extends Controller
 {
@@ -26,7 +27,8 @@ class DrugsController extends Controller
     public function create()
     {
         //
-        return view('applicant.create');
+        $drug = new Drugs;
+        return view('applicant.create', compact(['drug']));
     }
 
     /**
@@ -38,6 +40,11 @@ class DrugsController extends Controller
     public function store(StoreDrugsRequest $request)
     {
         //
+        $expiration_date = Carbon::now()->addYear(1)->toDateTimeString();  
+        $request['expiration_date'] = $expiration_date;
+        $drug = new Drugs;
+        $drug->create($request->all());
+        return redirect()->route('applicant.home')->with('status', 'Drug created Successfully!');
     }
 
     /**
@@ -46,9 +53,11 @@ class DrugsController extends Controller
      * @param  \App\Models\Drugs  $drugs
      * @return \Illuminate\Http\Response
      */
-    public function show(Drugs $drugs)
+    public function show($id)
     {
         //
+          $drug = Drugs::findOrFail($id);
+        return view('applicant.show' , compact(['drug']));
     }
 
     /**
@@ -57,11 +66,11 @@ class DrugsController extends Controller
      * @param  \App\Models\Drugs  $drugs
      * @return \Illuminate\Http\Response
      */
-    //public function edit(Drugs $drugs)
-    public function edit()
+    public function edit($id)
     {
         //
-        return view('applicant.edit');
+        $drug = Drugs::findOrFail($id);
+        return view('applicant.edit' , compact(['drug']));
     }
 
     /**
@@ -71,9 +80,12 @@ class DrugsController extends Controller
      * @param  \App\Models\Drugs  $drugs
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDrugsRequest $request, Drugs $drugs)
+    public function update(UpdateDrugsRequest $request, $id)
     {
         //
+            $drug = Drugs::findOrFail($id);
+             $drug->update($request->all());
+        return redirect()->route('applicant.home')->with('status', 'Entity updated Successfully!');
     }
 
     /**

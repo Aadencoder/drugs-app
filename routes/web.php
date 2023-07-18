@@ -23,7 +23,15 @@ Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //applicant and reviewer
-Route::get('/applicant', [ApplicantController::class,'index'])->name('applicant.home');
-Route::get('/add/entity', [DrugsController::class,'create'])->name('applicant.add.entity');
-Route::get('/edit/entity', [DrugsController::class,'edit'])->name('applicant.edit.entity');
 Route::get('/reviewer', [ReviewerController::class,'index'])->name('reviewer.home');
+
+
+Route::get('/applicant', [ApplicantController::class,'index'])->name('applicant.home');
+Route::get('/entity/create', [DrugsController::class,'create'])->name('applicant.entity.create');
+
+
+Route::post('/entity/store', [DrugsController::class, 'store'])->name('applicant.entity.store');
+Route::get('/entity/edit/{drug}', [DrugsController::class, 'edit'])->name('applicant.entity.edit');
+Route::get('/entity/show/{drug}', [DrugsController::class, 'show'])->name('applicant.entity.show');
+Route::put('/entity/update/{id}', [DrugsController::class, 'update'])->name('applicant.entity.update');
+Route::delete('/entity/delete/{id}', [DrugsController::class, 'delete'])->name('applicant.entity.destroy');

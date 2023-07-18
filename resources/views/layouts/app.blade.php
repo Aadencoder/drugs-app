@@ -164,7 +164,7 @@
                             <a class="nav-link" href="{{ url('/applicant') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('applicant.add.entity')}}">Add New Entity</a>
+                            <a class="nav-link" href="{{route('applicant.entity.create')}}">Add New Entity</a>
                         </li>
                     </ul>
 

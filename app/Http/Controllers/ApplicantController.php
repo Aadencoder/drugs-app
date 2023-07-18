@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Drugs;
 use Illuminate\Http\Request;
 
 class ApplicantController extends Controller
@@ -15,6 +16,7 @@ class ApplicantController extends Controller
 
     public function index()
     {
-        return view('applicant.home');
+        $drugs = Drugs::orderBy('id','desc')->paginate('10');
+        return view('applicant.home', compact(['drugs']));
     }
 }
