@@ -4,9 +4,7 @@
 
 ## Installation
 
-Please check the official laravel installation guide for server requirements before you start. [Official Documentation](https://laravel.com/docs/9.4/installation#installation)
-
-Alternative installation is possible without local dependencies relying on [Docker](#docker). 
+Please check the official laravel installation guide for server requirements before you start. 
 
 Clone the repository
 
@@ -32,6 +30,7 @@ Generate a new application key
 Run the database migrations (**Set the database connection in .env before migrating**)
 
     php artisan migrate
+
 
 Start the local development server
 
@@ -61,3 +60,9 @@ password
 Reviewer
 reviewer@test.com
 password
+
+
+Auth UI Package
+- composer require `laravel/ui`
+- `php artisan ui bootstrap --auth`
+- `npm install && npm run dev`
