@@ -16,7 +16,7 @@ class ApplicantController extends Controller
 
     public function index()
     {
-        $drugs = Drugs::orderBy('id','desc')->paginate('10');
+        $drugs = Drugs::where('created_by', auth()->user()->id)->orderBy('id','desc')->paginate('10');
         return view('applicant.home', compact(['drugs']));
     }
 }

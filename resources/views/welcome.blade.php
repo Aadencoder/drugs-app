@@ -25,7 +25,12 @@
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/applicant') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+                           @if( (auth()->user()->roles[0]->name == 'ROLE_APPLICANT'))
+                           <a href="{{ url('/applicant') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+                        @else
+                       <a href="{{ url('/reviewer') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+                        @endif
+                      
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
@@ -51,12 +56,13 @@
 
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                   tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                   quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                   consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                   cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                   proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                  Applicants can log in to the system and fill out a drug registration form with the necessary details.
+Once submitted, the application status will be set to "pending."
+Reviewers will review the application and provide feedback.
+When a drug's expiration date is reached, the system will notify the applicant or reviewer about the upcoming expiration.
+The drug registration will be marked as expired, and the applicant will be prompted to renew the registration.
+The applicant can update the necessary information and submit the renewal request.
+The renewal process will follow the same workflow as the initial registration.
                                 </div>
                             </div>
                         </div>
@@ -69,10 +75,13 @@
 
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in 
+                               Reviewers can log in to the system and access a list of pending drug applications.
+They can review the details provided by the applicant and either approve or reject the application.
+If the application is rejected, the reviewer can provide a note explaining the reason for rejection.
+Upon approval, the drug's approval status will be set to "approved," and the approval date will be recorded.
+The expiration date will be automatically calculated as one year from the approval date.
+<br><br>
+<b> note :  Reviewer can not register currenlty. Handle by Admin</b>
                                 </div>
                             </div>
                         </div>

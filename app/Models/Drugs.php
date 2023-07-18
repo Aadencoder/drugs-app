@@ -10,7 +10,7 @@ class Drugs extends Model
 {
     use HasFactory;
 
-     protected $fillable = ['name','manufacturer', 'ingredients', 'expiration_date', 'dose_form', 'approval_status', ''];
+     protected $fillable = ['name','manufacturer', 'ingredients', 'expiration_date', 'dose_form', 'approval_status', 'note', 'approval_date', 'created_by', 'updated_by'];
 
      public static function boot()
      {
@@ -24,7 +24,9 @@ class Drugs extends Model
         static::updating(function($model)
         {
             $user = Auth::user();
-            $model->updated_by = $user->id;
+            if (isset($user)) {
+                $model->updated_by = $user->id;
+            }
         });       
     }
 }

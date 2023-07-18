@@ -12,6 +12,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -160,12 +162,21 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
+                      
+                        @auth()
+                        @if( (auth()->user()->roles[0]->name == 'ROLE_APPLICANT'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/applicant') }}">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('applicant.entity.create')}}">Add New Entity</a>
+                            </li>
+                        @else
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/applicant') }}">Home</a>
+                            <a class="nav-link" href="{{ url('/reviewer') }}">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('applicant.entity.create')}}">Add New Entity</a>
-                        </li>
+                        @endif
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -214,5 +225,19 @@
         DRR &copy; {{date('Y')}}
     </div>
 </div>
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+  $('#statusChange').on('change', function() {
+    if ($(this).val() === 'rejected') {
+       var id = $(this).find(':selected').attr('data-id');
+       $('#drug_id').val(id);
+      $('#myModal').modal('show');
+    } else {
+     this.form.submit();
+    }
+  });
+});
+</script>
 </body>
 </html>

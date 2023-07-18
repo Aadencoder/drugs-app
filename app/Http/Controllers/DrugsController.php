@@ -40,8 +40,8 @@ class DrugsController extends Controller
     public function store(StoreDrugsRequest $request)
     {
         //
-        $expiration_date = Carbon::now()->addYear(1)->toDateTimeString();  
-        $request['expiration_date'] = $expiration_date;
+       // $expiration_date = Carbon::now()->addYear(1)->toDateTimeString();  
+        //$request['expiration_date'] = $expiration_date;
         $drug = new Drugs;
         $drug->create($request->all());
         return redirect()->route('applicant.home')->with('status', 'Drug created Successfully!');
@@ -98,4 +98,5 @@ class DrugsController extends Controller
     {
         //
     }
+
 }
