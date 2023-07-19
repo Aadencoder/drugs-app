@@ -19,8 +19,9 @@
               </p>
             </header>
             <div class="form-wrap"> 
-             <form action="#"  method="POST" enctype="multipart/form-data">
+             <form action="{{route('reviewer.entity.update', [$drug])}}"  method="POST" enctype="multipart/form-data">
               @csrf
+               @method('PUT')
               @include('applicant.form')
               <div class="row">
                 <div class="col-md-4">

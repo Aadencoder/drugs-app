@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateDrugsRequest;
 use App\Models\Drugs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -21,9 +22,10 @@ class ReviewerController extends Controller
      return view('reviewer.home', compact(['drugs']));
  }
 
- public function updateStatus(Request $request, $id)
+ public function updateStatus(Request $request)
  {
         //
+        
     if ($request->approval_status == "approved") {
       $approval_date = Carbon::now()->toDateTimeString();  
       $request['approval_date'] = $approval_date;
@@ -70,7 +72,7 @@ class ReviewerController extends Controller
      * @param  \App\Models\Drugs  $drugs
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDrugsRequest $request, $id)
+    public function update(Request $request, $id)
     {
         //
             $drug = Drugs::findOrFail($id);

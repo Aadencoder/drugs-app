@@ -28,7 +28,7 @@ Route::middleware([isReviewer::class])->group(function(){
 	Route::get('/reviewer/entity/edit/{drug}', [ReviewerController::class, 'edit'])->name('reviewer.entity.edit');
 	Route::get('/reviewer/entity/show/{drug}', [ReviewerController::class, 'show'])->name('reviewer.entity.show');
 	Route::put('/reviewer/entity/update/{id}', [ReviewerController::class, 'update'])->name('reviewer.entity.update');
-	Route::put('/reviewer/entity/update/status', [ReviewerController::class, 'updateStatus'])->name('reviewer.entity.updateStatus');
+	Route::put('/reviewer/entity/updatestatus', [ReviewerController::class, 'updateStatus'])->name('reviewer.entity.updateStatus');
 
 });
 

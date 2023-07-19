@@ -45,7 +45,7 @@
                                          <td>{{ \Illuminate\Support\Str::limit($drug->ingredients, 50, $end='...') }}</td>
                                          <td>{{$drug->dose_form}}</td>
                                          <td>
-                                            <form action="{{route('reviewer.entity.updateStatus', [$drug])}}"  method="POST" enctype="multipart/form-data">
+                                            <form action="{{route('reviewer.entity.update', [$drug])}}"  method="POST" enctype="multipart/form-data">
                                               @csrf
                                               @method('PUT')
                                               <select name="approval_status" id="statusChange" >
@@ -111,9 +111,7 @@
                                     <textarea  id="note" class="form-control  @error('note') is-invalid @enderror" name="note" placeholder="Enter note for rejection..." required="required"></textarea>
                                 </div>
                               </div>
-                            </div>
-                          
-                          
+                            </div>           
                     </div>
 
                     <!-- Modal footer -->
