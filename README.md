@@ -66,3 +66,14 @@ Auth UI Package
 - composer require `laravel/ui`
 - `php artisan ui bootstrap --auth`
 - `npm install && npm run dev`
+
+# Screenshots
+![alt text](https://github.com/Aadencoder/drugs-app/blob/main/public/images/DRR.png?raw=true)
+![alt text](https://github.com/Aadencoder/drugs-app/blob/main/public/images/DRR1.png?raw=true)
+![alt text](https://github.com/Aadencoder/drugs-app/blob/main/public/images/DRR2.png?raw=true)
+![alt text](https://github.com/Aadencoder/drugs-app/blob/main/public/images/DRR3.png?raw=true)
+![alt text](https://github.com/Aadencoder/drugs-app/blob/main/public/images/DRR4.png?raw=true)
+![alt text](https://github.com/Aadencoder/drugs-app/blob/main/public/images/DRR5.png?raw=true)
+![alt text](https://github.com/Aadencoder/drugs-app/blob/main/public/images/DRR6.png?raw=true)
+![alt text](https://github.com/Aadencoder/drugs-app/blob/main/public/images/DRR7.png?raw=true)
+![alt text](https://github.com/Aadencoder/drugs-app/blob/main/public/images/DRR8.png?raw=true)
